@@ -1,0 +1,30 @@
+---
+deployment:
+  tasks:
+    # 1. Khai báo thư mục deploy
+    - export DEPLOYPATH=/home/fmdabhrf/public_html/
+
+    # 2. Copy toàn bộ source code (trừ .git, .cpanel.yml)
+    - /bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' ./ $DEPLOYPATH
+
+    # 3. Cài đặt dependencies với Composer (nếu host có composer)
+    - cd $DEPLOYPATH
+    - /opt/cpanel/composer/bin/composer install --no-dev --optimize-autoloader
+
+    # 4. Thiết lập quyền ghi cho storage & bootstrap/cache
+    - chmod -R 775 $DEPLOYPATH/storage
+    - chmod -R 775 $DEPLOYPATH/bootstrap/cache
+
+    # 5. Copy file .env từ repo (nếu có)
+    # (hoặc bạn upload thủ công .env lên server rồi bỏ qua bước này)
+    # - cp .env $DEPLOYPATH/.env
+
+    # 6. Chạy migrate database (nếu cần)
+    # ⚠️ Cẩn thận: sẽ chạy mỗi lần deploy
+    #- php artisan migrate --force
+
+    # 7. Clear & optimize cache
+    - php artisan config:clear
+    - php artisan config:cache
+    - php artisan route:cache
+    - php artisan view:cache
