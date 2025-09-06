@@ -1,23 +1,19 @@
 ---
 deployment:
   tasks:
-    # 1. Khai báo thư mục public_html
-    - export DEPLOYPATH=/home/fmdabhrf/public_html/
+    - export DEPLOYPATH=/home/fmdabhrf/public_html
 
-    # 2. Copy toàn bộ code từ repo sang public_html, bỏ .git và .cpanel.yml
-    - /bin/rsync -a --delete --exclude='.git' --exclude='.cpanel.yml' ./ $DEPLOYPATH
+    # Lấy code mới nhất
+    - /usr/local/cpanel/3rdparty/bin/git pull origin main
 
-    # 3. Di chuyển vào thư mục public_html để chạy lệnh
-    - cd $DEPLOYPATH
+    # Cài đặt thư viện PHP qua composer (không tải package dev để nhẹ hơn)
+    - /opt/cpanel/composer/bin/composer install --no-dev --optimize-autoloader --working-dir=$DEPLOYPATH
 
-    # 4. Cài đặt dependencies (nếu host có Composer)
-    - /opt/cpanel/composer/bin/composer install --no-dev --optimize-autoloader
+    # Set quyền thư mục
+    - /bin/find $DEPLOYPATH -type d -exec chmod 755 {} \;
+    - /bin/find $DEPLOYPATH -type f -exec chmod 644 {} \;
 
-    # 5. Thiết lập quyền ghi cho storage và bootstrap/cache
-    - chmod -R 775 storage bootstrap/cache
-
-    # 6. Clear & cache cấu hình Laravel
-    - php artisan config:clear
-    - php artisan config:cache
-    - php artisan route:cache
-    - php artisan view:cache
+    # Laravel (nếu có): clear & cache lại
+    - /usr/local/bin/php $DEPLOYPATH/artisan config:cache
+    - /usr/local/bin/php $DEPLOYPATH/artisan route:cache
+    - /usr/local/bin/php $DEPLOYPATH/artisan view:cache
