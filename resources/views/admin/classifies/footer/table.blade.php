@@ -1,0 +1,1 @@
+<script src="{{ asset('dist/'.str_replace('.', '/', $resourceAlias).'/table.js') }}?update=20190423"></script>

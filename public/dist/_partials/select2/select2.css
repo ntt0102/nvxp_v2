@@ -1,0 +1,8 @@
+@import "../../../plugins/select2/select2.min.css";
+@import "../../../plugins/select2/select2-bootstrap4.min.css";
+
+.select2-selection--single .select2-selection__rendered{
+    padding-top: 2px !important;
+    height: 20px !important;
+    margin-left: 10px;
+}

@@ -1,0 +1,7 @@
+.result-item {
+	cursor: pointer;
+}
+
+.result-item:hover {
+	background-color: rgba(220,53,69, 0.3);
+}

@@ -1,0 +1,78 @@
+/*Main sidebar*/
+.main-sidebar {
+    overflow-x: hidden;
+}
+
+.main-sidebar .nav-sidebar {
+    position: relative;
+}
+
+[class*="sidebar-dark"] .brand-link {
+    border-bottom: none !important;
+    border-right: 0px solid white;
+}
+
+.sidebar {
+    height: 100% !important;
+}
+
+.sidebar .user-panel {
+    padding: 10px 0px;
+}
+
+.nav-divider {
+    height: 0;
+    margin: 0 0 3px 0;
+    overflow: hidden;
+    border-top: 2px dashed #495057;
+}
+
+.content-wrapper {
+    min-height: calc(100vh - 56px - 0px);
+}
+
+.sidebar-dark-warning .nav-sidebar > .nav-item > .nav-link.active {
+    color: #1f2d3d !important;
+}
+/* Control sidebar*/
+.control-sidebar {
+    position: fixed !important;
+    overflow-y: auto;
+}
+.control-sidebar,
+.control-sidebar:before {
+    width: 200px;
+}
+
+.nav-separator {
+    padding: 0.5rem;
+}
+
+.logo {
+    background-color: white;
+    margin-bottom: 0px;
+    border-radius: 50%;
+    height: 30px;
+    padding-left: 3px;
+    padding-right: 5px;
+    width: 108px;
+}
+
+.logo img {
+    margin-top: -18px;
+    height: 40px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+}
+
+.sidebar-dark-danger .nav-treeview > .nav-item > .nav-link.active {
+    color: red;
+    background-color: transparent;
+}
+
+.sidebar-dark-danger .nav-treeview > .nav-item > .nav-link.active:hover {
+    color: red;
+    background-color: rgba(255, 255, 255, 0.1);
+}

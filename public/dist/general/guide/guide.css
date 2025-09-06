@@ -1,0 +1,101 @@
+.wrapper {
+    background: gray !important;
+}
+
+/* The sidebar menu */
+.sidebar {
+    height: calc(100% - 56px); /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 56px;
+    left: -16px;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+    white-space: nowrap;
+    z-index: 2;
+}
+
+/* The sidebar links */
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: black;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    position: fixed;
+    left: 5px;
+    top: 60px;
+    z-index: 1;
+}
+
+.openbtn:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left 0.5s; /* If you want a transition effect */
+    padding: 5px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+
+.site-section {
+    padding: 7rem 1rem;
+}
+
+#main img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+
+#main a {
+    color: #dc3545 !important;
+}
+
+.over-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

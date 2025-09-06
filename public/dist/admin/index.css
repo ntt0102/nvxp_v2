@@ -1,0 +1,19 @@
+.group {
+  margin: 10px;
+}
+.item {
+  padding: 5px;
+}
+.item:hover {
+  background-color: rgba(220,53,69, 0.3)
+}
+.title {
+  font-weight: bold;
+  width: calc(100% - 80px);
+  padding-top: 3px;
+}
+.value {
+  font-size: 20px;
+  text-align: right;
+  width: 80px;
+}
